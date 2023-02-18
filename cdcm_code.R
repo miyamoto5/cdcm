@@ -157,9 +157,11 @@ DimPlot(pbmc.integrated.clean, label = TRUE, pt.size = 1)
 DimPlot(pbmc.integrated.clean, group.by = "group")
 DimPlot(pbmc.integrated.clean, label = "TRUE")
 
+DefaultAssay(pbmc.integrated.clean) = "RNA"
+
 ### now that we have filtered appropriately we can identify differentially expressed genes between the two groups
-lvip.markers <- FindMarkers(pbmc.integrated.clean, group.by = "group", ident.1 = "lvip", logfc.threshold = 0.25, only.pos = TRUE)
-cc2.markers <- FindMarkers(pbmc.integrated.clean, group.by = "group", ident.1 = "cc2", logfc.threshold = 0.25, only.pos = TRUE)
+lvip.markers <- FindMarkers(pbmc.integrated.clean, group.by = "group", ident.1 = "cDCM", logfc.threshold = 0.25, only.pos = TRUE)
+cc2.markers <- FindMarkers(pbmc.integrated.clean, group.by = "group", ident.1 = "control", logfc.threshold = 0.25, only.pos = TRUE)
 
 ### generating entropy score. for full explanation on calculating entropy score please see cited paper.
 
